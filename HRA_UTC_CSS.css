@@ -1,0 +1,49 @@
+body {
+  font-family: Verdana, Arial, Sans-Serif;
+  background: #4df7ff;
+}
+
+#body-text-content{
+  text-align: right;
+  margin-right: 5%;
+  margin-left: 5%;
+  background: white;
+  padding: 1em;
+}
+
+button:hover { background-color: #a8ff76;}
+
+#form-page-title, #results-page-title {
+  text-decoration: underline;
+}
+
+#careplan-output {
+  display: none;
+  margin-left: 5%;
+  margin-right: 5%;
+  background: white;
+  padding: 1em;
+}
+
+.sub-title-content{
+  font-weight: bold;
+}
+
+input {
+  background-color: #e3fdff;
+  font-weight: bold;
+}
+
+#designer-name-form {
+  text-align: left;
+  font-size: smaller;
+}
+
+#designer-name-results {
+  text-align: right;
+  font-size: smaller;
+}
+
+.report-headers {
+  text-decoration: underline;
+}
