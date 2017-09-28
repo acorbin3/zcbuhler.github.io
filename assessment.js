@@ -1,28 +1,24 @@
-function AssessmentObject() {
+function Assessment() {
   this.dateCompleted = document.getElementById("date-textBox").value;
 
   // Delcare the showFindings property with the dateCompleted and string.
   this.showFindings = this.dateCompleted + " HRA findings: ";
-
-  // Fall Risk property set.
-  if (document.getElementById("fall-risk-checkBox").checked) {
-
-    this.fallRisk = "Fall risk";
-    this.showFindings += this.fallRisk + ", ";
-  } else {
-
-    this.fallRisk = "";
+ 
+  //A lot of these check boxes could be a little more efficent with maybe a dictionary
+  // and looping over the keys which would be checkbox ID's seeing if they were checked
+  // and then the vlues would be what would be added to the "showFindings"
+  //Whats nice about this approach is all you need to do is update the Dictionary to add new items.
+  //Always look to see if you are doing something over and over and usualy thats where you can be more efficent
+  //Ill provide an example here
+  
+  var checkboxKeyValuePair = {"fall-risk-checkBox":"Fall risk", "asthma-checkBox":"Asthma"}
+  //Itterate over keys, check if checkbox is checked, if checked add value into the showFindings
+  for(var key in checkboxKeyValuePair){
+    if(document.getElementById(key).checked){
+      this.showFindings += checkboxKeyValuePair[key]
+    }
   }
-
-  // Asthma property set.
-  if (document.getElementById("asthma-checkBox").checked) {
-
-    this.asthma = "Asthma";
-    this.showFindings += this.asthma + ", ";
-  } else {
-
-    this.asthma = "";
-  }
+  
 
   // COPD property set.
   if (document.getElementById("copd-checkBox").checked) {
@@ -305,11 +301,11 @@ function AssessmentObject() {
 }
 
 function showMeWhatYouGot() {
-  // Create AssessmentObject based on form information.
-  var a = new AssessmentObject();
-  // Create GoalsObject from AssessmentObject.
+  // Create Assessment Object based on form information.
+  var a = new Assessment();
+  // Create Goals Object from Assessment Object.
   var g = new GoalsObject(a);
-  // Create InterventionObject frin AssessmentObject.
+  // Create Intervention Object frin Assessment Object.
   var i = new InterventionObject(a);
 
   // Output information to the user.
@@ -332,9 +328,9 @@ function newAssesmentForm() {
   location.reload();
 }
 
-// Take the reportable findings from the AssessmentObject that will be included in a
-// care plan. Assigns the value to the assessmentFindings property of the AssessmentObject.
-AssessmentObject.prototype.generateAllReportibleFindings = function() {
+// Take the reportable findings from the Assessment Object that will be included in a
+// care plan. Assigns the value to the assessmentFindings property of the Assessmen tObject.
+Assessment.prototype.generateAllReportibleFindings = function() {
   // The showFindings hold a string that indicates complettion date of the assessment(s).
   var outputString = this.showFindings;
 
